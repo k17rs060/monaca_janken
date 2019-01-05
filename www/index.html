@@ -39,17 +39,10 @@
       // ハイスコア
       var high_score = 0;
 
-      function gu() {
-        janken(hand_gu);
+      function play() {
+        janken(Math.floor(Math.random() * 3));
       }
 
-      function choki() {
-        janken(hand_choki);
-      }
-
-      function pa() {
-        janken(hand_pa);
-      }
 
       function janken(player_hand){
         // コンピュータの手を決定
@@ -129,7 +122,7 @@
   <div id="highscore" class="text-white bg-secondary"></div>
   <div class="mx-auto" style="width: 200px">
     
-    <a onclick="choki();" class="btn btn-outline-primary hand" role="button">じゃんけん</a>
+    <a onclick="play();" class="btn btn-outline-primary hand" role="button">じゃんけん</a>
     
     <a onclick="newgame();" class="btn btn-info text-white" id="newgame" role="button">New Game</a>
   </div>

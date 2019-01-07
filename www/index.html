@@ -10,20 +10,27 @@
     <script src="keys.js"></script>
     <script>
       // じゃんけんのハンド用変数（定数）
-      var hand_gu=0;
-      var hand_choki=1;
-      var hand_pa=2;
+      var hand_1=0;
+      var hand_2=1;
+      var hand_3=2;
+      var hand_4=3;
+      var hand_5=4;
+      var hand_6=5;
+
       // ハンド表示用配列
-      var hand_text = ["ぐー", "ちょき", "ぱー"];
+      var hand_text = ["1", "2", "3", "4", "5", "6"];
       // 勝敗判定用変数（定数）
       var judge_win=0;
       var judge_draw=1;
       var judge_loose=2;
       // 勝敗判定表
       var judge = [
-        [judge_draw, judge_win, judge_loose],
-        [judge_loose, judge_draw, judge_win],
-        [judge_win, judge_loose, judge_draw],
+        [judge_draw, judge_loose, judge_loose, judge_loose, judge_loose, judge_loose],
+        [judge_win, judge_draw, judge_loose, judge_loose, judge_loose, judge_loose],
+        [judge_win, judge_win, judge_draw, judge_loose, judge_loose, judge_loose],
+        [judge_win, judge_win, judge_win, judge_draw, judge_loose, judge_loose],
+        [judge_win, judge_win, judge_win, judge_win, judge_draw, judge_loose],
+        [judge_win, judge_win, judge_win, judge_win, judge_win, judge_draw],
       ];
       // 勝敗結果表示用配列
       var judge_text = ["勝ち", "あいこ", "負け"];
@@ -40,13 +47,13 @@
       var high_score = 0;
 
       function play() {
-        janken(Math.floor(Math.random() * 3));
+        janken(Math.floor(Math.random() * 6));
       }
 
 
       function janken(player_hand){
         // コンピュータの手を決定
-        comp_hand = Math.floor(Math.random() * 3);
+        comp_hand = Math.floor(Math.random() * 6);
         // 勝敗判定
         result = judge[player_hand][comp_hand];
         // 結果表示
@@ -79,7 +86,7 @@
         $(".hand").css("display", "inline");
         // ニューゲームボタン非表示
         $("#newgame").css("display", "none");
-        $("#result").html("じゃんけん・・・ぽん")
+        $("#result").html("サイコロを振ろう")
         $("#result2").html("");
       }
 
@@ -122,7 +129,7 @@
   <div id="highscore" class="text-white bg-secondary"></div>
   <div class="mx-auto" style="width: 200px">
     
-    <a onclick="play();" class="btn btn-outline-primary hand" role="button">じゃんけん</a>
+    <a onclick="play();" class="btn btn-outline-primary hand" role="button">振る</a>
     
     <a onclick="newgame();" class="btn btn-info text-white" id="newgame" role="button">New Game</a>
   </div>

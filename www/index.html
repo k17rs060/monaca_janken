@@ -33,14 +33,14 @@
         [judge_win, judge_win, judge_win, judge_win, judge_win, judge_draw],
       ];
       // 勝敗結果表示用配列
-      var judge_text = ["勝ち", "あいこ", "負け"];
+      var judge_text = ["勝ち", "引き分け", "負け"];
 
       // 連勝数記録
       var win_num = 0;
 
       // にふくら用おまじない
       var ncmb = new NCMB(appKey, clientKey);
-      var JankenScore = ncmb.DataStore("JankenScore");
+      var JankenScore = ncmb.DataStore("Score");
       var key = "score";
 
       // ハイスコア
@@ -65,6 +65,7 @@
         if(result == judge_win) {
           win_num++;
           $("#result2").html(win_num + "連勝!")
+           $("#si1").html(hand_text[player_hand])
         } else {
           gameover();
         }
@@ -89,7 +90,7 @@
         $("#result").html("サイコロを振ろう")
         $("#result2").html("");
       }
-
+      
       function gameover() {
         var msg = "GAME OVER<br>";
         if(win_num>0) {
@@ -106,7 +107,6 @@
           // スコア記録
           db = new JankenScore();
           db.set(key, win_num).save();
-
           msg += win_num +  "連勝でした。<br>";
         } else {
           msg += "1回も勝てませんでした。<br>次は頑張ろう";
@@ -128,14 +128,14 @@
   <h1 class="text-white bg-primary">チャレンジ</h1>
   <div id="highscore" class="text-white bg-secondary"></div>
   <div class="mx-auto" style="width: 200px">
-    
     <a onclick="play();" class="btn btn-outline-primary hand" role="button">振る</a>
-    
     <a onclick="newgame();" class="btn btn-info text-white" id="newgame" role="button">New Game</a>
   </div>
   <div id="result" class="text-white bg-secondary">
   </div>
   <div id="result2" class="bg-warning">
+  </div>
+   <div id="si1" class="bg-warning">
   </div>
 </body>
 </html>

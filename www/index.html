@@ -131,6 +131,25 @@
         }
       }
 
+ function enterData() {
+      var uTdata = new UTdata();
+      var value = parseInt($("#data").val());
+      uTdata.set(key, value)
+      .save()
+      .then(function(results){
+        $("#display").removeClass();
+        $("#display").addClass("bg-success");
+        $("#display").html("enter success");
+      })
+      .catch(function(results){
+        $("#display").removeClass();
+        $("#display").addClass("bg-warning");
+        $("#display").html("enter fail");
+      })
+    }
+
+
+
       function janken3(player_hand){
         // コンピュータの手を決定
         comp_hand = Math.floor(Math.random() * 13);
@@ -237,9 +256,14 @@
   <div class="mx-auto" style="width: 200px">
     <p>
     <p>
-    <a onclick="play();" class="btn btn-outline-primary hand" role="button">引く</a>
+    <a><input type="text" id="data" placeholder="Point"> 
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+    
+</a>
     <p>
     <p>
+      <a onclick="play();" class="btn btn-outline-primary hand" role="button">引く</a>
+      <p>
      <a onclick="two();" class="btn btn-outline-primary hand" role="button">×2</a>
     <a onclick="three();" class="btn btn-outline-primary hand" role="button">×3</a>
     <a onclick="four();" class="btn btn-outline-primary hand" role="button">×4</a>

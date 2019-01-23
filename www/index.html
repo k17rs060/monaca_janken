@@ -77,14 +77,14 @@
         janken(Math.floor(Math.random() * 13));
       }
 
-      function gu() {
-        janken(Math.floor(Math.random() * 13));
+      function two() {
+        janken2(Math.floor(Math.random() * 13));
       }
-      function choki() {
-        janken(Math.floor(Math.random() * 13));
+      function three() {
+        janken3(Math.floor(Math.random() * 13));
       }
-      function pa() {
-        janken(Math.floor(Math.random() * 13));
+      function four() {
+        janken4(Math.floor(Math.random() * 13));
       }
 
 
@@ -96,10 +96,80 @@
         // 結果表示
         msg="player:"+hand_text[player_hand]+"<br>"+
             "comp:"+hand_text[comp_hand]+"<br>"+
-            "結果:" + judge_text[result];
+            "結果:" + judge_text[result]+"<br>"+
+            "point"+ win_num;
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
+          win_num++;
+          $("#result2").html(win_num + "連勝!")
+           $("#si1").html(hand_text[player_hand])
+        } else {
+          gameover();
+        }
+      }
+
+      function janken2(player_hand){
+        // コンピュータの手を決定
+        comp_hand = Math.floor(Math.random() * 13);
+        // 勝敗判定
+        result = judge[player_hand][comp_hand];
+        // 結果表示
+        msg="player:"+hand_text[player_hand]+"<br>"+
+            "comp:"+hand_text[comp_hand]+"<br>"+
+            "結果:" + judge_text[result]+"<br>"+
+            "point"+ win_num;
+        $("#result").html(msg);
+        // 勝敗ごとの処理
+        if(result == judge_win) {
+          win_num++;
+          win_num++;
+          $("#result2").html(win_num + "連勝!")
+           $("#si1").html(hand_text[player_hand])
+        } else {
+          gameover();
+        }
+      }
+
+      function janken3(player_hand){
+        // コンピュータの手を決定
+        comp_hand = Math.floor(Math.random() * 13);
+        // 勝敗判定
+        result = judge[player_hand][comp_hand];
+        // 結果表示
+        msg="player:"+hand_text[player_hand]+"<br>"+
+            "comp:"+hand_text[comp_hand]+"<br>"+
+            "結果:" + judge_text[result]+"<br>"+
+            "point"+ win_num;
+        $("#result").html(msg);
+        // 勝敗ごとの処理
+        if(result == judge_win) {
+          win_num++;
+          win_num++;
+          win_num++;
+          $("#result2").html(win_num + "連勝!")
+           $("#si1").html(hand_text[player_hand])
+        } else {
+          gameover();
+        }
+      }
+
+      function janken4(player_hand){
+        // コンピュータの手を決定
+        comp_hand = Math.floor(Math.random() * 13);
+        // 勝敗判定
+        result = judge[player_hand][comp_hand];
+        // 結果表示
+        msg="player:"+hand_text[player_hand]+"<br>"+
+            "comp:"+hand_text[comp_hand]+"<br>"+
+            "結果:" + judge_text[result]+"<br>"+
+            "point"+ win_num;
+        $("#result").html(msg);
+        // 勝敗ごとの処理
+        if(result == judge_win) {
+          win_num++;
+          win_num++;
+          win_num++;
           win_num++;
           $("#result2").html(win_num + "連勝!")
            $("#si1").html(hand_text[player_hand])
@@ -170,9 +240,9 @@
     <a onclick="play();" class="btn btn-outline-primary hand" role="button">引く</a>
     <p>
     <p>
-     <a onclick="gu();" class="btn btn-outline-primary hand" role="button">×2</a>
-    <a onclick="choki();" class="btn btn-outline-primary hand" role="button">×3</a>
-    <a onclick="pa();" class="btn btn-outline-primary hand" role="button">×4</a>
+     <a onclick="two();" class="btn btn-outline-primary hand" role="button">×2</a>
+    <a onclick="three();" class="btn btn-outline-primary hand" role="button">×3</a>
+    <a onclick="four();" class="btn btn-outline-primary hand" role="button">×4</a>
     <a onclick="newgame();" class="btn btn-info text-white" id="newgame" role="button">New Game</a>
   </div>
   <div id="result" class="text-white bg-secondary">

@@ -59,6 +59,7 @@
 
         [judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_win, judge_draw],
       ];
+
       // 勝敗結果表示用配列
       var judge_text = ["勝ち", "引き分け", "負け"];
 
@@ -80,9 +81,11 @@
       function two() {
         janken2(Math.floor(Math.random() * 13));
       }
+
       function three() {
         janken3(Math.floor(Math.random() * 13));
       }
+      
       function four() {
         janken4(Math.floor(Math.random() * 13));
       }
@@ -111,7 +114,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num = point;
+          win_num += point;
         } else {
           gameover();
         }
@@ -130,7 +133,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num = point * 2;
+          win_num += point * 2;
         } else {
           gameover();
         }
@@ -149,7 +152,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num = point * 3;
+          win_num +=  point * 3;
         } else {
           gameover();
         }
@@ -168,7 +171,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num = point * 4;
+          win_num += point * 4;
         } else {
           gameover();
         }
@@ -240,9 +243,9 @@
     <a onclick="data();" class="btn btn-outline-primary hand" role="button">決定</a>
     <p>
     <p>
-      <a onclick="play();" class="btn btn-outline-primary hand" role="button">引く</a>
-      <p>
-     <a onclick="two();" class="btn btn-outline-primary hand" role="button">×2</a>
+    <a onclick="play();" class="btn btn-outline-primary hand" role="button">引く</a>
+    <p>
+    <a onclick="two();" class="btn btn-outline-primary hand" role="button">×2</a>
     <a onclick="three();" class="btn btn-outline-primary hand" role="button">×3</a>
     <a onclick="four();" class="btn btn-outline-primary hand" role="button">×4</a>
     <a onclick="newgame();" class="btn btn-info text-white" id="newgame" role="button">New Game</a>

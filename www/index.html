@@ -87,6 +87,17 @@
         janken4(Math.floor(Math.random() * 13));
       }
 
+      var point = 0;
+      //pointの入力
+      function data(){
+          var textForm = document.getElementById("textForm");
+          //var sum = parseInt(textForm,10);
+          point == parseInt(textForm,10);
+          //point += sum;
+        }
+      
+    
+      
 
       function janken(player_hand){
         // コンピュータの手を決定
@@ -102,7 +113,7 @@
         // 勝敗ごとの処理
         if(result == judge_win) {
           win_num++;
-          $("#result2").html(win_num + "連勝!")
+          $("#result2").html(win_num)
            $("#si1").html(hand_text[player_hand])
         } else {
           gameover();
@@ -122,33 +133,13 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num++;
-          win_num++;
-          $("#result2").html(win_num + "連勝!")
+          win_num*win_num;
+          $("#result2").html(win_num )
            $("#si1").html(hand_text[player_hand])
         } else {
           gameover();
         }
       }
-
- function enterData() {
-      var uTdata = new UTdata();
-      var value = parseInt($("#data").val());
-      uTdata.set(key, value)
-      .save()
-      .then(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-success");
-        $("#display").html("enter success");
-      })
-      .catch(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-warning");
-        $("#display").html("enter fail");
-      })
-    }
-
-
 
       function janken3(player_hand){
         // コンピュータの手を決定
@@ -163,10 +154,8 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num++;
-          win_num++;
-          win_num++;
-          $("#result2").html(win_num + "連勝!")
+          win_num*win_num*win_num;
+          $("#result2").html(win_num)
            $("#si1").html(hand_text[player_hand])
         } else {
           gameover();
@@ -186,11 +175,8 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num++;
-          win_num++;
-          win_num++;
-          win_num++;
-          $("#result2").html(win_num + "連勝!")
+          win_num*win_num*win_num*win_num;
+          $("#result2").html(win_num )
            $("#si1").html(hand_text[player_hand])
         } else {
           gameover();
@@ -202,13 +188,13 @@
         JankenScore.order(key, true).fetch()
         .then(function(result){
           high_score = result.get(key);
-          $("#highscore").html("ハイスコア：" + high_score + "連勝");
+          $("#highscore").html("ハイスコア：" + high_score );
         })
         .catch(function(error){
-          $("#highscore").html("ハイスコア：" + high_score + "連勝");
+          $("#highscore").html("ハイスコア：" + high_score );
         });
-  
-        win_num = 0;
+
+        win_num += point;
         // ハンドボタン表示
         $(".hand").css("display", "inline");
         // ニューゲームボタン非表示
@@ -233,7 +219,7 @@
           // スコア記録
           db = new JankenScore();
           db.set(key, win_num).save();
-          msg += win_num +  "連勝でした。<br>";
+          msg += win_num;
         } else {
           msg += "1回も勝てませんでした。<br>次は頑張ろう";
         }
@@ -247,6 +233,7 @@
       // ゲーム初期化
       $(function(){
         newgame();
+        win_num = 0;
       })
     </script>
 </head>
@@ -256,10 +243,10 @@
   <div class="mx-auto" style="width: 200px">
     <p>
     <p>
-    <a><input type="text" id="data" placeholder="Point"> 
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
-    
-</a>
+    <a><input type="text" id="textfForm" ></a>
+    <p>
+    <p>
+    <a onclick="data();" class="btn btn-outline-primary hand" role="button">決定</a>
     <p>
     <p>
       <a onclick="play();" class="btn btn-outline-primary hand" role="button">引く</a>

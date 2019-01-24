@@ -88,12 +88,11 @@
       }
 
       var point = 0;
-      //pointの入力
+      //pointの取得
       function data(){
-          var textForm = document.getElementById("textForm");
-          //var sum = parseInt(textForm,10);
-          point == parseInt(textForm,10);
-          //point += sum;
+          var textForm = document.getElementById("textForm").value;
+          var sum = parseInt(textForm, 10);
+          point += sum;
         }
       
     
@@ -112,9 +111,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num++;
-          $("#result2").html(win_num)
-           $("#si1").html(hand_text[player_hand])
+          win_num = point;
         } else {
           gameover();
         }
@@ -133,9 +130,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num*win_num;
-          $("#result2").html(win_num )
-           $("#si1").html(hand_text[player_hand])
+          win_num = point * 2;
         } else {
           gameover();
         }
@@ -154,9 +149,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num*win_num*win_num;
-          $("#result2").html(win_num)
-           $("#si1").html(hand_text[player_hand])
+          win_num = point * 3;
         } else {
           gameover();
         }
@@ -175,9 +168,7 @@
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
-          win_num*win_num*win_num*win_num;
-          $("#result2").html(win_num )
-           $("#si1").html(hand_text[player_hand])
+          win_num = point * 4;
         } else {
           gameover();
         }
@@ -194,7 +185,8 @@
           $("#highscore").html("ハイスコア：" + high_score );
         });
 
-        win_num += point;
+        win_num = 0;
+        point = 0;
         // ハンドボタン表示
         $(".hand").css("display", "inline");
         // ニューゲームボタン非表示
@@ -233,7 +225,6 @@
       // ゲーム初期化
       $(function(){
         newgame();
-        win_num = 0;
       })
     </script>
 </head>
@@ -243,7 +234,7 @@
   <div class="mx-auto" style="width: 200px">
     <p>
     <p>
-    <a><input type="text" id="textfForm" ></a>
+    <a><input type="text" id="textForm" ></a>
     <p>
     <p>
     <a onclick="data();" class="btn btn-outline-primary hand" role="button">決定</a>
